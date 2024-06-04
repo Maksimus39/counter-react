@@ -1,13 +1,42 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    background: gray;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.borderCounter {
+    padding: 20px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #03131c;
+    border-radius: 8px;
+    max-width: 300px;
+}
+
+.Title-Counter {
+    align-items: center;
+    color: #cc1515;
+}
+
+.displayValue {
+    font-weight: bold;
+}
+
+.displayValueSpan {
+    color: #e18711;
+    font-size: 30px;
+}
+
+.buttonContainer {
+    display: flex; /* Активация flexbox */
+    justify-content: space-between; /* Равномерное распределение пространства между элементами */
+    gap: 5px;
+}
+
+.buttonContainer button {
+    width: 90px; /* Установите желаемую ширину */
+    height: 30px; /* Установите желаемую высоту */
+    padding: 10px; /* Опционально: добавьте внутренний отступ для увеличения размера содержимого */
+    font-size: 16px; /* Опционально: увеличьте размер текста, если это необходимо */
+    border-radius: 5px;
 }

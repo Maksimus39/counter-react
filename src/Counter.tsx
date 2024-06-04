@@ -1,3 +1,5 @@
+import {UniversalButton} from "./universalButton/UniversalButton";
+
 export type CounterProps = {
     TITLE_COUNTER: string
     minValue: number
@@ -14,26 +16,26 @@ export function Counter(props: CounterProps) {
     }
 
     // функция для сброса значения до 0
-    const countDecrementHeader=()=>{
+    const countDecrementHeader = () => {
         props.decrementCounter()
     }
 
     return (
-        <div>
+        <div className="borderCounter">
             <div>
-                <h1>
+                <h1 className="Title-Counter">
                     {props.TITLE_COUNTER}
                 </h1>
             </div>
-            <div>
-                <span>{props.counter}</span>
+            <div className="displayValue">
+                <span className="displayValueSpan">
+                    {props.counter}
+                </span>
             </div>
-            <div>
-                <button onClick={countIncrementHandler}>Increment:</button>
-                <button onClick={countDecrementHeader}>Reset:</button>
+            <div className="buttonContainer">
+                <UniversalButton name={"Increment:"} onClick={countIncrementHandler}/>
+                <UniversalButton name={"Reset:"} onClick={countDecrementHeader}/>
             </div>
         </div>
-
-
     )
 }
