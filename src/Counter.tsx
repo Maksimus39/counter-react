@@ -20,21 +20,32 @@ export function Counter(props: CounterProps) {
         props.decrementCounter()
     }
 
+    // Условия для атрибута disabled
+    const isIncrementDisabled = props.counter >= props.maxValue;
+
+    // Определим класс для value-container в зависимости от isIncrementDisabled
+    const valueContainerClass = isIncrementDisabled ? "value-container value-container-disabled" : "value-container";
+
+
+
     return (
-        <div className="borderCounter">
-            <div>
-                <h1 className="Title-Counter">
-                    {props.TITLE_COUNTER}
-                </h1>
-            </div>
-            <div className="displayValue">
-                <span className="displayValueSpan">
-                    {props.counter}
-                </span>
-            </div>
-            <div className="buttonContainer">
-                <UniversalButton name={"Increment:"} onClick={countIncrementHandler}/>
-                <UniversalButton name={"Reset:"} onClick={countDecrementHeader}/>
+        <div className="counter-container">
+
+            <h1 className="title-container">{props.TITLE_COUNTER}</h1>
+
+            <span className={valueContainerClass}>{props.counter}</span>
+
+            <div className="buttons-container">
+
+                <UniversalButton
+                    name={"Increment:"}
+                    onClick={countIncrementHandler}
+                    disabled={isIncrementDisabled}
+                />
+                <UniversalButton
+                    name={"Reset:"}
+                    onClick={countDecrementHeader}
+                />
             </div>
         </div>
     )
