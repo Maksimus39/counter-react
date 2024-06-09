@@ -1,42 +1,101 @@
-body {
-    background: gray;
+:root {
+    /* Определение основных переменных */
+    --background-color-main: #f2f3f5;
+    --background-color-light: #ffffff;
+    --background-color-button-hover: #cccccc;
+    --background-color-button-active: #b0b0b0;
+    --text-color-main: #333333;
+    --text-color-disabled: #521515;
+    --border-radius-main: 10px;
+    --box-shadow-main: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition-main: all 0.3s ease;
 }
 
-.borderCounter {
-    padding: 20px;
-    margin: 20px auto;
+body {
+    background-color: var(--background-color-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.counter-container,
+.value-container {
+    border-radius: var(--border-radius-main);
+    background-color: var(--background-color-light);
+    color: var(--text-color-main);
+    box-shadow: var(--box-shadow-main);
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 0;
+}
+
+.counter-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px solid #03131c;
-    border-radius: 8px;
-    max-width: 300px;
+    gap: 20px;
+    padding: 30px;
+    border: none;
 }
 
-.Title-Counter {
-    align-items: center;
-    color: #cc1515;
+.title-container,
+.value-container {
+    padding: 20px 0;
+    font-weight: 600;
 }
 
-.displayValue {
-    font-weight: bold;
+/* Я объединил стили для value-container для избежания дублирования */
+.value-container {
+    font-size: 16px; /* базовый размер */
+    color: black;
+    font-size: 2.5rem;
+    font-weight: 700;
+    transition: var(--transition-main);
 }
 
-.displayValueSpan {
-    color: #e18711;
-    font-size: 30px;
+.value-container-disabled {
+    font-size: 18px;
+    color: var(--text-color-disabled);
 }
 
-.buttonContainer {
-    display: flex; /* Активация flexbox */
-    justify-content: space-between; /* Равномерное распределение пространства между элементами */
-    gap: 5px;
+.title-container {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.buttonContainer button {
-    width: 90px; /* Установите желаемую ширину */
-    height: 30px; /* Установите желаемую высоту */
-    padding: 10px; /* Опционально: добавьте внутренний отступ для увеличения размера содержимого */
-    font-size: 16px; /* Опционально: увеличьте размер текста, если это необходимо */
+.value-container:hover {
+    transform: scale(1.05);
+}
+
+.buttons-container {
+    display: flex;
+    gap: 10px;
+}
+
+.buttons-container button {
+    flex: 1;
+    padding: 10px;
+    font-size: 0.85rem;
+    cursor: pointer;
     border-radius: 5px;
+    background-color: #e0e0e0;
+    color: inherit;
+    font-weight: 600;
+    transition: background-color var(--transition-main);
+    border: 2px solid transparent;
+    outline: none;
+}
+
+.buttons-container button:hover {
+    background-color: var(--background-color-button-hover);
+    border-color: #a2a2a2;
+}
+
+.buttons-container button:active {
+    background-color: var(--background-color-button-active);
+    border-color: #808080;
 }
