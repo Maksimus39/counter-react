@@ -1,4 +1,4 @@
-import {UniversalButton} from "./universalButton/UniversalButton";
+import {UniversalButton} from "../universalButton/UniversalButton";
 
 export type CounterProps = {
     TITLE_COUNTER: string
@@ -25,7 +25,6 @@ export function Counter(props: CounterProps) {
 
     // Определим класс для value-container в зависимости от isIncrementDisabled
     const valueContainerClass = isIncrementDisabled ? "value-container value-container-disabled" : "value-container";
-
 
 
     return (
