@@ -8,7 +8,13 @@ export default function App() {
     const TITLE_COUNTER = "Counter"
 
     // Заголовок счётчика с настройками
-    const SETTINGS_COUNTER = "Settings Counter"
+    const TITLE_SETTINGS_COUNTER = "Settings Counter"
+
+    // Заголовок первого input
+    const MAX_VALUE="Max value"
+
+    // Заголовок второго input
+    const START_VALUE="Start value"
 
     // Блок с данными
     const minValue = 0;
@@ -16,6 +22,19 @@ export default function App() {
 
     // хук меняющий state счётчика
     const [counter, setCounter] = useState(minValue);
+
+    // Хук фиксирующий значение минимального инпута
+    const [minInputValue, setMinInputValue] = useState();
+
+    // Хук фиксирующий значение максимального инпута
+    const [maxInputValue, setMaxInputValue] = useState();
+
+    // Хук фиксирующий state
+    const [state, setState] = useState();
+
+
+
+
 
     // функция для инкрементирования значения
     const incrementCounter = () => {
@@ -40,7 +59,9 @@ export default function App() {
             />
 
             <SettingsCounter
-                SETTINGS_COUNTER={SETTINGS_COUNTER}
+                TITLE_SETTINGS_COUNTER={TITLE_SETTINGS_COUNTER}
+                START_VALUE={START_VALUE}
+                MAX_VALUE={MAX_VALUE}
             />
         </div>
     )
