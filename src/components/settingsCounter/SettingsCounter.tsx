@@ -2,7 +2,9 @@ import React from 'react';
 import {UniversalButton} from "../universalButton/UniversalButton";
 
 type SettingsCounterProps = {
-    SETTINGS_COUNTER: string
+    TITLE_SETTINGS_COUNTER: string
+    START_VALUE:string
+    MAX_VALUE:string
 }
 
 export const SettingsCounter = (props: SettingsCounterProps) => {
@@ -11,11 +13,23 @@ export const SettingsCounter = (props: SettingsCounterProps) => {
     return (
         <div className="counter-container">
 
-            <h2 className="title-container">{props.SETTINGS_COUNTER}</h2>
+            <h2 className="title-container">{props.TITLE_SETTINGS_COUNTER}</h2>
 
             <div className="input-container">
-                <input type="number"/>
-                <input type="number"/>
+                <div>
+                    <h2>
+                        {props.MAX_VALUE}
+                    </h2>
+                    <input type="number"/>
+                </div>
+
+                <div>
+                    <h2>
+                        {props.START_VALUE}
+                    </h2>
+                    <input type="number"/>
+                </div>
+
             </div>
 
 
