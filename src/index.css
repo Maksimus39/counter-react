@@ -1,147 +1,10 @@
-/*:root {*/
-/*    !* Определение основных переменных *!*/
-/*    --background-color-main: #f2f3f5;*/
-/*    --background-color-light: #ffffff;*/
-/*    --background-color-button-hover: #cccccc;*/
-/*    --background-color-button-active: #b0b0b0;*/
-/*    --text-color-main: #333333;*/
-/*    --text-color-disabled: #521515;*/
-/*    --border-radius-main: 10px;*/
-/*    --box-shadow-main: 0 4px 6px rgba(0, 0, 0, 0.1);*/
-/*    --transition-main: all 0.3s ease;*/
-/*}*/
-
-/*body {*/
-/*    background-color: var(--background-color-main);*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    min-height: 100vh;*/
-/*    margin: 0;*/
-/*    flex-direction: column; !* Для вертикального выравнивания общего контейнера *!*/
-/*}*/
-
-/*.counter-container,*/
-/*.value-container {*/
-/*    border-radius: var(--border-radius-main);*/
-/*    background-color: var(--background-color-light);*/
-/*    color: var(--text-color-main);*/
-/*    box-shadow: var(--box-shadow-main);*/
-/*    text-align: center;*/
-/*    width: 100%;*/
-/*    max-width: 300px;*/
-/*    margin: 0;*/
-/*}*/
-
-/*.counter-container {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    align-items: center;*/
-/*    gap: 20px;*/
-/*    padding: 30px;*/
-/*    border: none;*/
-/*}*/
-
-/*.title-container,*/
-/*.value-container {*/
-/*    padding: 20px 0;*/
-/*    font-weight: 600;*/
-/*}*/
-
-/*!* Я объединил стили для value-container для избежания дублирования *!*/
-/*.value-container {*/
-/*    font-size: 16px; !* базовый размер *!*/
-/*    color: black;*/
-/*    font-size: 2.5rem;*/
-/*    font-weight: 700;*/
-/*    transition: var(--transition-main);*/
-/*}*/
-
-/*.value-container-disabled {*/
-/*    font-size: 18px;*/
-/*    color: var(--text-color-disabled);*/
-/*}*/
-
-/*.title-container {*/
-/*    font-size: 1.5rem;*/
-/*    text-transform: uppercase;*/
-/*    letter-spacing: 1px;*/
-/*}*/
-
-/*.value-container:hover {*/
-/*    transform: scale(1.05);*/
-/*}*/
-
-/*.buttons-container {*/
-/*    display: flex;*/
-/*    gap: 10px;*/
-/*}*/
-
-/*.buttons-container button {*/
-/*    flex: 1;*/
-/*    padding: 10px;*/
-/*    font-size: 0.85rem;*/
-/*    cursor: pointer;*/
-/*    border-radius: 5px;*/
-/*    background-color: #e0e0e0;*/
-/*    color: inherit;*/
-/*    font-weight: 600;*/
-/*    transition: background-color var(--transition-main);*/
-/*    border: 2px solid transparent;*/
-/*    outline: none;*/
-/*}*/
-
-/*.buttons-container button:hover {*/
-/*    background-color: var(--background-color-button-hover);*/
-/*    border-color: #a2a2a2;*/
-/*}*/
-
-/*.buttons-container button:active {*/
-/*    background-color: var(--background-color-button-active);*/
-/*    border-color: #808080;*/
-/*}*/
-
-/*.counters-wrapper {*/
-/*    display: flex;*/
-/*    justify-content: center; !* Выравниваем элементы по центру *!*/
-/*    gap: 20px; !* Задаем отступы между элементами*!*/
-/*    padding: 20px; !* Если нужно добавить внешний отступ *!*/
-/*    flex-wrap: wrap; !* В случае недостатка места, элементы перейдут на следующую строку *!*/
-/*}*/
-
-/*.input-container {*/
-/*    display: flex; !* Выравнивает input элементы горизонтально *!*/
-/*    gap: 10px; !* Расстояние между input элементами *!*/
-/*    justify-content: center; !* Центрирование элементов в контейнере *!*/
-/*    margin: 10px 0; !* Отступ сверху и снизу контейнера *!*/
-/*}*/
-
-/*.input-container input {*/
-/*    padding: 10px; !* Внутренние отступы для input *!*/
-/*    border-radius: var(--border-radius-main); !* Скругление углов в соответствии с общими стилями *!*/
-/*    border: 1px solid #ccc; !* Тонкая серая граница *!*/
-/*    box-shadow: var(--box-shadow-main); !* Тень в соответствии с общими стилями *!*/
-/*    width: 100%; !* Занимает всю допустимую ширину внутри контейнера *!*/
-/*    max-width: 140px; !* Максимальная ширина для каждого input *!*/
-/*    font-size: 1rem; !* Размер шрифта в соответствии с общими стилями *!*/
-/*    color: var(--text-color-main); !* Цвет текста в соответствии с общими стилями *!*/
-/*    transition: var(--transition-main); !* Плавный переход в соответствии с общими стилями *!*/
-/*}*/
-
-/*.input-container input:focus {*/
-/*    outline: none; !* Убирает стандартный outline при фокусе *!*/
-/*    border-color: #000; !* Цвет границы при фокусе *!*/
-/*    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1); !* Более заметная тень при фокусе *!*/
-/*}*/
-
-
 :root {
     --background-color-main: #f2f3f5;
     --background-color-light: #ffffff;
     --background-color-button-hover: #cccccc;
     --background-color-button-active: #b0b0b0;
     --text-color-main: #333333;
-    --text-color-disabled: #521515;
+    --text-color-disabled: #ab0b0b;
     --border-radius-main: 10px;
     --box-shadow-main: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition-main: all 0.3s ease;
@@ -171,7 +34,7 @@ body {
 .counter-container,
 .value-container {
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
     margin: 10px 0;
 }
 
@@ -194,7 +57,7 @@ body {
 }
 
 .value-container-disabled {
-    font-size: 18px;
+    font-size: 90px;
     color: var(--text-color-disabled);
 }
 
