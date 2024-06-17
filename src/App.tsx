@@ -1,50 +1,40 @@
 import './App.css';
+import React, {useState} from "react";
 import {Counter} from "./components/counter/Counter";
-import {useState} from "react";
 import {SettingsCounter} from "./components/settingsCounter/SettingsCounter";
 
 export default function App() {
-    // заголовок Счётчика
-    const TITLE_COUNTER = "Counter"
-
-    // Заголовок счётчика с настройками
-    const TITLE_SETTINGS_COUNTER = "Settings Counter"
 
     // Заголовок первого input
-    const MAX_VALUE="Max value"
-
+    const MAX_VALUE = "Max value"
     // Заголовок второго input
-    const START_VALUE="Start value"
+    const START_VALUE = "Start value"
 
-    // Блок с данными
-    const minValue = 0;
-    const maxValue = 5;
+    const TITLE_COUNTER = "Counter";
+    const TITLE_SETTINGS_COUNTER = "Settings Counter";
 
-    // хук меняющий state счётчика
+    // Начальные значения для счётчика, эти значения теперь будут меняться
+    const [minValue, setMinValue] = useState(0);
+    const [maxValue, setMaxValue] = useState(5);
+
     const [counter, setCounter] = useState(minValue);
 
-    // Хук фиксирующий значение минимального инпута
-    const [minInputValue, setMinInputValue] = useState();
-
-    // Хук фиксирующий значение максимального инпута
-    const [maxInputValue, setMaxInputValue] = useState();
-
-    // Хук фиксирующий state
-    const [state, setState] = useState();
-
-
-
-
-
-    // функция для инкрементирования значения
     const incrementCounter = () => {
-        return setCounter(counter + 1)
-    }
+        if (counter < maxValue) {
+            setCounter(prev => prev + 1);
+        }
+    };
 
-    // функция для сброса значения до 0
     const decrementCounter = () => {
-        return setCounter(minValue)
-    }
+        setCounter(minValue);
+    };
+
+    // Функция для обновления минимума и максимума из настроек счётчика
+    const handleFixedValues = (min: number, max: number) => {
+        setMinValue(Number(min)); // Обязательно преобразуйте в число, если используются строки
+        setMaxValue(Number(max));
+        setCounter(Number(min)); // Сбрасываем значение счетчика до нового минимального значения
+    };
 
 
     return (
@@ -59,12 +49,11 @@ export default function App() {
             />
 
             <SettingsCounter
-                TITLE_SETTINGS_COUNTER={TITLE_SETTINGS_COUNTER}
                 START_VALUE={START_VALUE}
                 MAX_VALUE={MAX_VALUE}
+                TITLE_SETTINGS_COUNTER={TITLE_SETTINGS_COUNTER}
+                onFixValues={handleFixedValues} // Передаем функцию как проп
             />
         </div>
-    )
+    );
 }
-
-
