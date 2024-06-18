@@ -3,7 +3,12 @@ import React, {useState} from "react";
 import {Counter} from "./components/counter/Counter";
 import {SettingsCounter} from "./components/settingsCounter/SettingsCounter";
 
+
 export default function App() {
+
+    const initialMinValue = 0
+    const initialMaxValue = 5
+
 
     // Заголовок первого input
     const MAX_VALUE = "Max value"
@@ -14,16 +19,17 @@ export default function App() {
     const TITLE_SETTINGS_COUNTER = "Settings Counter";
 
     // Начальные значения для счётчика, эти значения теперь будут меняться
-    const [minValue, setMinValue] = useState(0);
-    const [maxValue, setMaxValue] = useState(5);
+    const [minValue, setMinValue] = useState(initialMinValue);
+    const [maxValue, setMaxValue] = useState(initialMaxValue);
 
     const [counter, setCounter] = useState(minValue);
 
     const incrementCounter = () => {
         if (counter < maxValue) {
-            setCounter(prev => prev + 1);
+            setCounter(counter => counter + 1);
         }
     };
+
 
     const decrementCounter = () => {
         setCounter(minValue);
@@ -41,8 +47,8 @@ export default function App() {
         <div className="counters-wrapper">
             <Counter
                 TITLE_COUNTER={TITLE_COUNTER}
-                minValue={minValue}
-                maxValue={maxValue}
+                minInitialValue={minValue}
+                maxInitialValue={maxValue}
                 incrementCounter={incrementCounter}
                 decrementCounter={decrementCounter}
                 counter={counter}
@@ -53,6 +59,7 @@ export default function App() {
                 MAX_VALUE={MAX_VALUE}
                 TITLE_SETTINGS_COUNTER={TITLE_SETTINGS_COUNTER}
                 onFixValues={handleFixedValues} // Передаем функцию как проп
+
             />
         </div>
     );
