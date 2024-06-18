@@ -6,7 +6,9 @@ export type CounterProps = {
     maxInitialValue: number
     incrementCounter: () => void
     decrementCounter: () => void
-    counter: number
+    counter: string
+    isIncrementDisabled:boolean
+
 }
 
 export function Counter(props: CounterProps) {
@@ -19,11 +21,7 @@ export function Counter(props: CounterProps) {
     const countDecrementHeader = () => {
         props.decrementCounter()
     }
-
-    // Проверяем, не достиг ли счетчик максимального значения для кнопки инкрементирования
-    const isIncrementDisabled = props.maxInitialValue === props.counter
-    const spanClass = isIncrementDisabled ? "span-container span-disabled" : "span-container";
-
+    const spanClass = props.isIncrementDisabled ? "span-container span-disabled" : "span-container";
     return (
         <div className="counter-container">
 
@@ -38,7 +36,7 @@ export function Counter(props: CounterProps) {
                 <UniversalButton
                     name={"Increment:"}
                     onClick={countIncrementHandler}
-                    disabled={isIncrementDisabled}
+                    disabled={props.isIncrementDisabled}
                 />
                 <UniversalButton
                     name={"Reset:"}
