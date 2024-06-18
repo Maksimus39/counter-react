@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {UniversalButton} from "../universalButton/UniversalButton";
 
 type SettingsCounterProps = {
@@ -6,37 +6,39 @@ type SettingsCounterProps = {
     START_VALUE: string,
     MAX_VALUE: string,
     onFixValues: (min: number, max: number) => void,
+    setMinInputValue:(value:number)=>void
+    setMaxInputValue:(value:number)=>void
+    setFixedMinValue:(value:number)=>void
+    minInputValue:number
+    setFixedMaxValue:(value:number)=>void
+    maxInputValue:number
+    fixedMinValue:number
+    fixedMaxValue:number
+    error:boolean
 }
 
 export const SettingsCounter = (props: SettingsCounterProps) => {
-    // Хук фиксирующий значение минимального инпута
-    const [minInputValue, setMinInputValue] = useState('');
-    // Хук фиксирующий значение максимального инпута
-    const [maxInputValue, setMaxInputValue] = useState('');
 
-    // Хук для хранения зафиксированных значений
-    const [fixedMinValue, setFixedMinValue] = useState('');
-    const [fixedMaxValue, setFixedMaxValue] = useState('');
 
     // Хендлер для минимального значения
     const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setMinInputValue(e.currentTarget.value);
+        props.setMinInputValue(Number(e.currentTarget.value));
     };
 
     // Хендлер для максимального значения
     const handleMaxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setMaxInputValue(e.currentTarget.value);
+        props.setMaxInputValue(Number(e.currentTarget.value));
     };
 
 
     const handleFixValues = () => {
-        setFixedMinValue(minInputValue);
-        setFixedMaxValue(maxInputValue);
-        props.onFixValues(Number(minInputValue), Number(maxInputValue)); // Вызываем функцию обратного вызова с новыми значениями
+        props.setFixedMinValue(props.minInputValue);
+        props.setFixedMaxValue(props.maxInputValue);
+        props.onFixValues(Number(props.minInputValue), Number(props.maxInputValue)); // Вызываем функцию обратного вызова с новыми значениями
     };
 
     // проверка input на отрицательное значение и на равное значение
-    const settingsInput = Number(minInputValue) < 0
+    const settingsInput = Number(props.minInputValue) < 0
 
     // написание класса для input
     const inputClass = settingsInput ? "input-disabled" : ""
@@ -50,18 +52,20 @@ export const SettingsCounter = (props: SettingsCounterProps) => {
                     <h2>{props.START_VALUE}</h2>
                     <input
                         type="number"
-                        value={minInputValue}
+                        value={props.minInputValue}
                         onChange={handleMinChange}
                         placeholder="Enter min value"
                         className={inputClass}
+
                     />
+                    {props.error && <div>error</div>}
                 </div>
 
                 <div>
                     <h2>{props.MAX_VALUE}</h2>
                     <input
                         type="number"
-                        value={maxInputValue}
+                        value={props.maxInputValue}
                         onChange={handleMaxChange}
                         placeholder="Enter max value"
                         className={inputClass}
@@ -74,8 +78,8 @@ export const SettingsCounter = (props: SettingsCounterProps) => {
             </div>
 
             {/* Демонстрация зафиксированных значений */}
-            <p>Fixed Min Value: {fixedMinValue}</p>
-            <p>Fixed Max Value: {fixedMaxValue}</p>
+            <p>Fixed Min Value: {props.fixedMinValue}</p>
+            <p>Fixed Max Value: {props.fixedMaxValue}</p>
         </div>
     );
 };
