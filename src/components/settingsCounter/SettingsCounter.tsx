@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import {UniversalButton} from "../universalButton/UniversalButton";
 
 type SettingsCounterProps = {
-    TITLE_SETTINGS_COUNTER: string;
-    START_VALUE: string;
-    MAX_VALUE: string;
-    onFixValues: (min: number, max: number) => void;
+    TITLE_SETTINGS_COUNTER: string,
+    START_VALUE: string,
+    MAX_VALUE: string,
+    onFixValues: (min: number, max: number) => void,
 }
 
 export const SettingsCounter = (props: SettingsCounterProps) => {
@@ -35,28 +35,36 @@ export const SettingsCounter = (props: SettingsCounterProps) => {
         props.onFixValues(Number(minInputValue), Number(maxInputValue)); // Вызываем функцию обратного вызова с новыми значениями
     };
 
+    // проверка input на отрицательное значение и на равное значение
+    const settingsInput = Number(minInputValue) < 0
+
+    // написание класса для input
+    const inputClass = settingsInput ? "input-disabled" : ""
+
     return (
         <div className="counter-container">
             <h2 className="title-container">{props.TITLE_SETTINGS_COUNTER}</h2>
 
             <div className="input-container">
                 <div>
-                    <h2>{props.MAX_VALUE}</h2>
+                    <h2>{props.START_VALUE}</h2>
                     <input
                         type="number"
                         value={minInputValue}
                         onChange={handleMinChange}
                         placeholder="Enter min value"
+                        className={inputClass}
                     />
                 </div>
 
                 <div>
-                    <h2>{props.START_VALUE}</h2>
+                    <h2>{props.MAX_VALUE}</h2>
                     <input
                         type="number"
                         value={maxInputValue}
                         onChange={handleMaxChange}
                         placeholder="Enter max value"
+                        className={inputClass}
                     />
                 </div>
             </div>
