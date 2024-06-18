@@ -2,8 +2,8 @@ import {UniversalButton} from "../universalButton/UniversalButton";
 
 export type CounterProps = {
     TITLE_COUNTER: string
-    minValue: number
-    maxValue: number
+    minInitialValue: number
+    maxInitialValue: number
     incrementCounter: () => void
     decrementCounter: () => void
     counter: number
@@ -20,19 +20,18 @@ export function Counter(props: CounterProps) {
         props.decrementCounter()
     }
 
-    // Условия для атрибута disabled
-    const isIncrementDisabled = props.counter >= props.maxValue;
-
-    // Определим класс для value-container в зависимости от isIncrementDisabled
-    const valueContainerClass = isIncrementDisabled ? "value-container value-container-disabled" : "value-container";
-
+    // Проверяем, не достиг ли счетчик максимального значения для кнопки инкрементирования
+    const isIncrementDisabled = props.maxInitialValue === props.counter
+    const spanClass = isIncrementDisabled ? "span-container span-disabled" : "span-container";
 
     return (
         <div className="counter-container">
 
             <h1 className="title-container">{props.TITLE_COUNTER}</h1>
 
-            <span className={valueContainerClass}>{props.counter}</span>
+            <span className={spanClass}>
+                {props.counter}
+            </span>
 
             <div className="buttons-container">
 
