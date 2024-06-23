@@ -104,6 +104,7 @@ export default function App() {
                 fixedMaxValue={fixedMaxValue}
                 setFixedMaxValue={setFixedMaxValue}
                 error={error}
+
             />
         </div>
     );
