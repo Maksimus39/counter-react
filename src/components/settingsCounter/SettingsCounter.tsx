@@ -6,15 +6,15 @@ type SettingsCounterProps = {
     START_VALUE: string,
     MAX_VALUE: string,
     onFixValues: (min: number, max: number) => void,
-    setMinInputValue:(value:number)=>void
-    setMaxInputValue:(value:number)=>void
-    setFixedMinValue:(value:number)=>void
-    minInputValue:number
-    setFixedMaxValue:(value:number)=>void
-    maxInputValue:number
-    fixedMinValue:number
-    fixedMaxValue:number
-    error:boolean
+    setMinInputValue: (value: number) => void
+    setMaxInputValue: (value: number) => void
+    setFixedMinValue: (value: number) => void
+    minInputValue: number
+    setFixedMaxValue: (value: number) => void
+    maxInputValue: number
+    fixedMinValue: number
+    fixedMaxValue: number
+    error: boolean
 }
 
 export const SettingsCounter = (props: SettingsCounterProps) => {
@@ -37,11 +37,13 @@ export const SettingsCounter = (props: SettingsCounterProps) => {
         props.onFixValues(Number(props.minInputValue), Number(props.maxInputValue)); // Вызываем функцию обратного вызова с новыми значениями
     };
 
-    // проверка input на отрицательное значение и на равное значение
-    const settingsInput = Number(props.minInputValue) < 0
+    // Используем props.error для определения, когда числа некорректны
+    // Здесь мы обновляем логику для проверки ошибки: если minInputValue < 0, maxInputValue < 0, или minInputValue >= maxInputValue
+    const isError = props.error || props.minInputValue >= props.maxInputValue || Number(props.minInputValue) < 0 || Number(props.maxInputValue) < 0;
+    // Изменяем класс для инпута, чтобы он отображался красным, если есть ошибка
+    const inputClass = isError ? "input-error" : "";
 
-    // написание класса для input
-    const inputClass = settingsInput ? "input-disabled" : ""
+
 
     return (
         <div className="counter-container">
@@ -58,7 +60,7 @@ export const SettingsCounter = (props: SettingsCounterProps) => {
                         className={inputClass}
 
                     />
-                    {props.error && <div>error</div>}
+                    {isError && <div className="error">Error: Enter a correct value</div>}
                 </div>
 
                 <div>
@@ -74,7 +76,7 @@ export const SettingsCounter = (props: SettingsCounterProps) => {
             </div>
 
             <div className="buttons-container">
-                <UniversalButton onClick={handleFixValues} name="Fix the value"/>
+                <UniversalButton onClick={handleFixValues} name="Fix the value" disabled={isError}/>
             </div>
 
             {/* Демонстрация зафиксированных значений */}
