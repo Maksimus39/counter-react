@@ -8,7 +8,6 @@ export type CounterProps = {
     decrementCounter: () => void
     counter: string
     isIncrementDisabled:boolean
-
 }
 
 export function Counter(props: CounterProps) {
